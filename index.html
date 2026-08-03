@@ -43,7 +43,7 @@
       font-size: 16px;
     }
 
-    /* ---------- arch divider (signature motif) ---------- */
+    /* ---------- arch divider ---------- */
     .arch-divider {
       width: 64px; height: 32px;
       margin: 0 auto 22px;
@@ -303,9 +303,12 @@
       transition: transform 0.3s;
     }
     .swatch .dot:hover { transform: scale(1.08); }
-    .swatch .dot.c1 { background: #E35336 ; }
-    .swatch .dot.c2 { background: #F5F5DC; }
-    .swatch .dot.c3 { background: #8B4513; border-color: #A35C24; }
+
+    /* --- couleurs unies (sans texture) --- */
+    .swatch .dot.c1 { background: #d1482c; }  /* Terracotta */
+    .swatch .dot.c2 { background: #fbfbd7; }  /* Beige */
+    .swatch .dot.c3 { background: #8B4513; }  /* Marron */
+
     .swatch p { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; color: #2A0E09; }
     .dresscode .note {
       max-width: 520px; margin: 0 auto; text-align: center;
@@ -372,7 +375,7 @@
     footer .amp { font-family: 'Fraunces', serif; font-style: italic; color: #DBA263; font-size: 22px; display: block; margin-bottom: 8px; }
     footer .date { font-size: 13px; letter-spacing: 2px; }
 
-    /* ---------- LECTEUR AUDIO FLOTTANT ---------- */
+    /* ---------- lecteur audio flottant ---------- */
     .audio-float {
       position: fixed;
       bottom: 30px;
@@ -633,7 +636,6 @@
     <span class="heart-icon">❤️</span>
     <span class="label-mini"></span>
     <audio controls autoplay loop>
-      <!-- 👇 REMPLACE "musique-mariee.mpeg" par le NOM DE TON FICHIER MPEG -->
       <source src="./musique-mariee.mpeg" type="audio/mpeg">
       Votre navigateur ne supporte pas l'audio.
     </audio>
