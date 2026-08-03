@@ -230,11 +230,31 @@
     .card .hour { font-family: 'Fraunces', serif; font-size: 30px; color: #5C1F15; font-weight: 600; }
     .card p { margin: 12px 0 18px; line-height: 1.6; }
     .map-link {
-      font-size: 13px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
-      color: #A35C24; text-decoration: none; border-bottom: 1px solid #A35C24; padding-bottom: 2px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #A35C24;
+      text-decoration: none;
+      border-bottom: 1px solid #A35C24;
+      padding-bottom: 2px;
       transition: color 0.2s, border-color 0.2s;
+      display: inline-block;
+      margin: 0 6px;
     }
     .map-link:hover { color: #5C1F15; border-color: #5C1F15; }
+    .map-link.yango {
+      color: #2A7A3E;
+      border-color: #2A7A3E;
+    }
+    .map-link.yango:hover { color: #1A5A2A; border-color: #1A5A2A; }
+    .map-links-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
 
     /* ---------- bible ---------- */
     .verses {
@@ -425,9 +445,9 @@
   <section class="hero">
     <div class="eyebrow">Vous êtes invité(e)</div>
     <div class="hero-arch">
-      <img src="./back.jpg" alt="Désiré et Vanessa">
+      <img src="./back.jpeg" alt="Désiré et Vanessa">
     </div>
-    <h1>Vanessa <em>&</em> Désiré</h1>
+    <h1> Désiré <em>&</em>Vanessa </h1>
     <p class="lede">Nous avons le bonheur de vous inviter à célébrer notre union, entourés de ceux qui comptent pour nous.</p>
     <div class="date">05 Septembre 2026</div>
     <a href="#presence" class="btn solid">Confirmer ma présence</a>
@@ -443,13 +463,13 @@
     </div>
     <div class="couple">
       <div class="person">
-        <div class="arch-frame"><img src="./flower.jpg" alt="Vanessa"></div>
+        <div class="arch-frame"><img src="./flower.jpeg" alt="Vanessa"></div>
         <h3>Vanessa</h3>
         <p>La mariée</p>
       </div>
       <div class="amp">&</div>
       <div class="person">
-        <div class="arch-frame"><img src="./ring.jpg" alt="Désiré"></div>
+        <div class="arch-frame"><img src="./ring.jpeg" alt="Désiré"></div>
         <h3>Désiré</h3>
         <p>Le marié</p>
       </div>
@@ -482,17 +502,26 @@
       <div class="card">
         <div class="hour">09h00</div>
         <p>Mairie de Cocody</p>
-        <a class="map-link" href="https://maps.google.com/?q=Mairie+de+Cocody">Voir l'itinéraire</a>
+        <div class="map-links-group">
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=5.35978,-3.98407" target="_blank">🗺️ Maps</a>
+          <a class="map-link yango" href="https://yango.com/maps?q=5.35978,-3.98407" target="_blank">📍 Yango</a>
+        </div>
       </div>
       <div class="card">
         <div class="hour">12h00</div>
         <p>Église des AD Pailler Centre<br>Temple de l'Unité</p>
-        <a class="map-link" href="https://maps.google.com/?q=AD+Pailler+Centre+Temple+de+l'Unité">Voir l'itinéraire</a>
+        <div class="map-links-group">
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=5.38530,-3.98690" target="_blank">🗺️ Maps</a>
+          <a class="map-link yango" href="https://yango.com/maps?q=5.38530,-3.98690" target="_blank">📍 Yango</a>
+        </div>
       </div>
       <div class="card">
         <div class="hour">Réception</div>
         <p>Jardin de Pailler</p>
-        <a class="map-link" href="https://maps.google.com/?q=Jardin+de+Pailler">Voir l'itinéraire</a>
+        <div class="map-links-group">
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=5.38550,-3.98710" target="_blank">🗺️ Maps</a>
+          <a class="map-link yango" href="https://yango.com/maps?q=5.38550,-3.98710" target="_blank">📍 Yango</a>
+        </div>
       </div>
     </div>
   </section>
@@ -529,7 +558,7 @@
     </div>
     <div class="palette">
       <div class="swatch"><div class="dot c1"></div><p>Terracotta</p></div>
-      <div class="swatch"><div class="dot c2"></div><p></p>Beige</div>
+      <div class="swatch"><div class="dot c2"></div><p>Beige</p></div>
       <div class="swatch"><div class="dot c3"></div><p>Marron</p></div>
     </div>
     <p class="note">Nous serions ravis de vous voir porter ces teintes, en tenue classique ou en pagne. Merci d'éviter le <strong>blanc</strong>, réservé à la mariée.</p>
@@ -602,9 +631,9 @@
   <!-- ============ LECTEUR AUDIO FLOTTANT ============ -->
   <div class="audio-float">
     <span class="heart-icon">❤️</span>
-    <span class="label-mini">Notre chanson</span>
+    <span class="label-mini"></span>
     <audio controls autoplay loop>
-      <!-- 👇 REMPLACE "musique-mariee.mp3" par le NOM DE TON FICHIER MPEG -->
+      <!-- 👇 REMPLACE "musique-mariee.mpeg" par le NOM DE TON FICHIER MPEG -->
       <source src="./musique-mariee.mpeg" type="audio/mpeg">
       Votre navigateur ne supporte pas l'audio.
     </audio>
