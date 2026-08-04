@@ -375,6 +375,25 @@
     footer .amp { font-family: 'Fraunces', serif; font-style: italic; color: #DBA263; font-size: 22px; display: block; margin-bottom: 8px; }
     footer .date { font-size: 13px; letter-spacing: 2px; }
 
+    /* ---------- PROTECTION IMAGES (CSS) ---------- */
+    img {
+      user-select: none;
+      -webkit-user-drag: none;
+      user-drag: none;
+      -webkit-touch-callout: none;
+    }
+
+    /* Bloque l'impression de la page (évite le PDF avec images) */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .hero-arch, .arch-frame, img {
+        display: none !important;
+        visibility: hidden !important;
+      }
+    }
+
     /* ---------- lecteur audio flottant ---------- */
     .audio-float {
       position: fixed;
@@ -662,6 +681,73 @@
         });
       }, { threshold: 0.15 });
       revealEls.forEach(el => io.observe(el));
+
+      // =============================================
+      // ====== PROTECTION IMAGES + CODE SOURCE ======
+      // =============================================
+
+      // 1. PROTECTION DES IMAGES (clic droit + glisser)
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          alert('📸 Ces photos sont protégées. Merci de respecter notre intimité !');
+          return false;
+        });
+        img.addEventListener('dragstart', function(e) {
+          e.preventDefault();
+          return false;
+        });
+      });
+
+      // 2. BLOQUER view-source: (redirection vers la page normale)
+      if (window.location.protocol === 'view-source:') {
+        window.location.href = window.location.href.replace('view-source:', '');
+      }
+
+      // 3. ANTI-DEBUGGING (détecte si la console est ouverte)
+      (function antiDebug() {
+        function check() {
+          const start = performance.now();
+          debugger; // Si la console est ouverte, le debugger s'arrête ici
+          const end = performance.now();
+          if (end - start > 100) {
+            // La console est probablement ouverte → on vide la page
+            document.body.innerHTML = '<h1 style="text-align:center;margin-top:20vh;color:#5C1F15;">⛔ Accès interdit</h1>';
+            window.location.href = 'about:blank';
+          }
+        }
+        setInterval(check, 2000);
+        check();
+      })();
+
+      // 4. BLOQUER TOUS LES RACCOURCIS DE DEBUG
+      document.addEventListener('keydown', function(e) {
+        const ctrl = e.ctrlKey || e.metaKey;
+        const shift = e.shiftKey;
+        const key = e.key.toLowerCase();
+
+        if (
+          e.key === 'F12' ||                                // F12 (outils développeur)
+          (ctrl && key === 'u') ||                         // Ctrl+U (code source)
+          (ctrl && key === 's') ||                         // Ctrl+S (sauvegarder la page)
+          (ctrl && shift && (key === 'i' || key === 'j' || key === 'c')) || // Ctrl+Shift+I/J/C
+          e.key === 'PrintScreen'                          // Touche Impr écran
+        ) {
+          e.preventDefault();
+          alert('⛔ Cette action est désactivée sur ce site.');
+          return false;
+        }
+      });
+
+      // 5. BLOQUER LE CLIC DROIT sur toute la page (sauf dans les formulaires)
+      document.addEventListener('contextmenu', function(e) {
+        const tag = e.target.tagName.toLowerCase();
+        // On laisse le clic droit dans les champs de formulaire (copier/coller)
+        if (tag !== 'input' && tag !== 'textarea' && tag !== 'select') {
+          e.preventDefault();
+          return false;
+        }
+      });
 
       // ----- FORMSPREE AJAX -----
       const form = document.getElementById('rsvp-form');
