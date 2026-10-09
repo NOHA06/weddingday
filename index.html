@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Genius Keynote 2026 — Invitation Privée</title>
+<title>Genius Keynote 2026 — Invitation Officielle</title>
+
+<!-- Bibliothèque html2canvas pour permettre de télécharger l'invitation en image -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
-/* =========================================================
-   VARIABLES & DESIGN SYSTEM
-========================================================= */
 :root {
     --navy: #0c1550;
     --blue: #2764e8;
@@ -18,7 +18,6 @@
     --gold-bright: #ffd94e;
     --gold-dark: #b87900;
     --white: #ffffff;
-    --light: #f7f8fc;
     --text: #111b52;
     --border: #e5e7ef;
 }
@@ -45,7 +44,7 @@ button, input, select, textarea {
 }
 
 /* =========================================================
-   HERO / ENVELOPPE DESIGN
+   HERO / ACCUEIL
 ========================================================= */
 .hero {
     min-height: 100vh;
@@ -83,7 +82,7 @@ button, input, select, textarea {
 }
 
 /* =========================================================
-   CARTE D'INVITATION
+   CARTE D'INVITATION (Celle qui sera téléchargée)
 ========================================================= */
 .invitation {
     position: relative;
@@ -100,9 +99,6 @@ button, input, select, textarea {
     text-align: center;
 }
 
-/* =========================================================
-   HEADER / LOGO
-========================================================= */
 .brand {
     display: flex;
     justify-content: center;
@@ -164,17 +160,9 @@ button, input, select, textarea {
     width: 100%;
     height: 3px;
     margin: 15px 0 20px;
-    background: linear-gradient(
-        90deg,
-        var(--blue),
-        #00a878,
-        var(--yellow)
-    );
+    background: linear-gradient(90deg, var(--blue), #00a878, var(--yellow));
 }
 
-/* =========================================================
-   TITRE & INVITÉ
-========================================================= */
 .title-pill {
     display: inline-block;
     background: var(--navy);
@@ -221,9 +209,6 @@ button, input, select, textarea {
     border-radius: 2px;
 }
 
-/* =========================================================
-   DATE, HEURE & LIEU
-========================================================= */
 .date-section {
     display: flex;
     justify-content: center;
@@ -273,9 +258,6 @@ button, input, select, textarea {
     color: #444;
 }
 
-/* =========================================================
-   COMPTE À REBOURS (COUNTDOWN)
-========================================================= */
 .countdown-container {
     display: flex;
     justify-content: center;
@@ -290,27 +272,20 @@ button, input, select, textarea {
     border-radius: 12px;
     min-width: 65px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(12,21,80,0.15);
 }
 
 .countdown-number {
     font-size: 20px;
     font-weight: 800;
     color: var(--yellow);
-    line-height: 1.1;
 }
 
 .countdown-label {
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: .5px;
     color: #c7cbe0;
-    margin-top: 2px;
 }
 
-/* =========================================================
-   SCEAU DORÉ
-========================================================= */
 .seal {
     position: absolute;
     bottom: -75px;
@@ -324,13 +299,7 @@ button, input, select, textarea {
 .seal-outer {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        145deg,
-        var(--gold-light),
-        var(--gold-mid),
-        var(--gold-bright),
-        var(--gold-dark)
-    );
+    background: linear-gradient(145deg, var(--gold-light), var(--gold-mid), var(--gold-bright), var(--gold-dark));
     border-radius: 44% 56% 48% 52% / 50% 45% 55% 50%;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
@@ -339,17 +308,12 @@ button, input, select, textarea {
     position: absolute;
     inset: 18px;
     border-radius: 50%;
-    background: linear-gradient(
-        145deg,
-        #ffe875,
-        #d19500
-    );
+    background: linear-gradient(145deg, #ffe875, #d19500);
     border: 3px solid #8e5a00;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 0 0 12px rgba(80,45,0,0.4);
 }
 
 .seal-text {
@@ -420,14 +384,6 @@ button, input, select, textarea {
     outline: none;
     background: #fafbfe;
     color: var(--text);
-    transition: .2s;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: var(--blue);
-    box-shadow: 0 0 0 4px rgba(39,100,232,.10);
 }
 
 .radio-group {
@@ -441,14 +397,9 @@ button, input, select, textarea {
     border-radius: 12px;
     padding: 10px 8px;
     cursor: pointer;
-    transition: .2s;
     font-size: 13px;
     font-weight: 600;
     text-align: center;
-}
-
-.radio-option:hover {
-    border-color: var(--blue);
 }
 
 .radio-option input {
@@ -466,23 +417,21 @@ button, input, select, textarea {
     font-size: 18px;
     font-weight: 800;
     cursor: pointer;
-    transition: .25s;
     margin-top: 5px;
+    transition: .2s;
 }
 
 .submit-btn:hover {
     background: var(--blue);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(39,100,232,.25);
 }
 
 /* =========================================================
-   CONFIRMATION
+   BLOC SUCCÈS & TÉLÉCHARGEMENT DE LA CARTE
 ========================================================= */
 .confirmation {
     display: none;
     text-align: center;
-    padding: 30px 10px;
+    padding: 20px 10px;
 }
 
 .confirmation.active {
@@ -490,28 +439,44 @@ button, input, select, textarea {
 }
 
 .confirmation-icon {
-    width: 75px;
-    height: 75px;
-    margin: auto auto 18px;
+    width: 65px;
+    height: 65px;
+    margin: auto auto 15px;
     border-radius: 50%;
     background: var(--yellow);
     color: var(--navy);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 900;
 }
 
-.confirmation h3 {
-    font-size: 28px;
-    color: var(--navy);
-    margin-bottom: 10px;
+.download-card-btn {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(39,100,232,0.3);
+    cursor: pointer;
+    border: none;
 }
 
-.confirmation p {
-    color: #68708d;
-    line-height: 1.6;
+.back-site-btn {
+    display: inline-block;
+    background: #f0f3fc;
+    color: var(--navy);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px solid #d4deff;
 }
 
 /* =========================================================
@@ -539,20 +504,9 @@ button, input, select, textarea {
     text-align: center;
 }
 
-.info-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
-}
-
 .info-card h3 {
     color: var(--yellow);
     margin-bottom: 8px;
-    font-size: 18px;
-}
-
-.info-card p {
-    color: #e7e9f5;
-    font-size: 15px;
 }
 
 footer {
@@ -563,80 +517,10 @@ footer {
     font-size: 14px;
 }
 
-/* =========================================================
-   RESPONSIVE MOBILE
-========================================================= */
 @media (max-width: 700px) {
-    .hero {
-        padding: 25px 10px;
-    }
-    .invitation {
-        padding: 25px 15px 85px;
-        border-radius: 20px;
-    }
-    .brand-left {
-        font-size: 22px;
-    }
-    .brand-right .genius-top {
-        font-size: 18px;
-    }
-    .brand-right .keynote-title {
-        font-size: 28px;
-    }
-    .brand-divider {
-        height: 50px;
-    }
-    .tagline {
-        font-size: 10px;
-        letter-spacing: 3px;
-    }
-    .title-pill {
-        padding: 10px 20px;
-    }
-    .guest-line {
-        font-size: 16px;
-    }
-    .description {
-        font-size: 14px;
-    }
-    .day-number-box {
-        width: 75px;
-        height: 70px;
-        font-size: 44px;
-    }
-    .day-name, .month {
-        font-size: 18px;
-    }
-    .event-details-pill {
-        flex-direction: column;
-        gap: 5px;
-        font-size: 13px;
-        padding: 10px 14px;
-    }
-    .countdown-box {
-        min-width: 55px;
-        padding: 6px 8px;
-    }
-    .countdown-number {
-        font-size: 16px;
-    }
-    .countdown-label {
-        font-size: 9px;
-    }
-    .seal {
-        width: 130px;
-        height: 130px;
-        bottom: -65px;
-    }
-    .rsvp-card {
-        padding: 25px 15px;
-    }
-    .radio-group {
-        grid-template-columns: 1fr;
-    }
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
+    .invitation { padding: 25px 15px 85px; }
+    .radio-group { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -644,10 +528,10 @@ footer {
 <body>
 
 <!-- =====================================================
-     HERO & CARTE D'INVITATION
+     HERO & CARTE D'INVITATION (Visble au début avec "INVITÉ(E)")
 ===================================================== -->
-<section class="hero">
-    <div class="invitation">
+<section class="hero" id="heroSection">
+    <div class="invitation" id="captureCard">
         
         <div class="brand">
             <div class="brand-left">
@@ -695,12 +579,11 @@ footer {
             <div class="month">Octobre</div>
         </div>
 
-        <!-- <div class="event-details-pill">
+        <div class="event-details-pill">
             <div>⏰ <span>08H00 - 13H00</span></div>
             <div>📍 <span>Genius Groups</span></div>
-        </div> -->
+        </div>
 
-        <!-- Compte à rebours dynamique -->
         <div class="countdown-container" id="countdown">
             <div class="countdown-box">
                 <div class="countdown-number" id="days">00</div>
@@ -720,7 +603,6 @@ footer {
             </div>
         </div>
 
-        <!-- Sceau Doré -->
         <div class="seal">
             <div class="seal-outer"></div>
             <div class="seal-inner">
@@ -735,12 +617,12 @@ footer {
 
 
 <!-- =====================================================
-     SECTION RSVP (FORMULAIRE FORMSPREE)
+     SECTION FORMULAIRE RSVP
 ===================================================== -->
 <section class="rsvp-section" id="rsvp">
     <div class="container">
         <h2 class="section-title">Confirmez votre présence</h2>
-        <p class="section-subtitle">Remplissez le formulaire ci-dessous pour valider votre venue.</p>
+        <p class="section-subtitle">Remplissez le formulaire pour générer votre invitation personnalisée.</p>
 
         <div class="rsvp-card">
             <form id="rsvpForm" action="https://formspree.io/f/maeqokqa" method="POST">
@@ -793,15 +675,19 @@ footer {
                 </div>
 
                 <button type="submit" class="submit-btn">
-                    Confirmer ma présence →
+                    Valider & Télécharger mon Invitation →
                 </button>
             </form>
 
-            <!-- Bloc Confirmation -->
+            <!-- Bloc Confirmation avec Téléchargement d'image & Retour au site -->
             <div class="confirmation" id="confirmation">
                 <div class="confirmation-icon">✓</div>
-                <h3>Merci pour votre réponse !</h3>
-                <p id="confirmationText">Votre participation a bien été enregistrée.</p>
+                <h3 id="confTitle">Merci pour votre réponse !</h3>
+                <p id="confirmationText" style="color:#68708d; margin-bottom:15px;">Votre carte personnalisée est prête.</p>
+                
+                <button class="download-card-btn" id="downloadBtn">📥 Télécharger mon Invitation (Image)</button>
+                <br>
+                <button class="back-site-btn" id="backBtn">↩ Retour à l'accueil du site</button>
             </div>
         </div>
     </div>
@@ -809,7 +695,7 @@ footer {
 
 
 <!-- =====================================================
-     INFOS ÉVÉNEMENT
+     INFOS ÉVÉNEMENT & FOOTER
 ===================================================== -->
 <section class="event-section">
     <div class="container">
@@ -818,28 +704,21 @@ footer {
 
         <div class="info-grid">
             <div class="info-card">
-                <div class="info-icon">📅</div>
-                <h3>Date</h3>
+                <h3>📅 Date</h3>
                 <p>Samedi 24 octobre 2026</p>
             </div>
             <div class="info-card">
-                <div class="info-icon">🕐</div>
-                <h3>Heure</h3>
+                <h3>🕐 Heure</h3>
                 <p>08H00 - 13H00</p>
             </div>
             <div class="info-card">
-                <div class="info-icon">📍</div>
-                <h3>Lieu</h3>
+                <h3>📍 Lieu</h3>
                 <p>Genius Groups</p>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
 <footer>
     © 2026 Genius Groups — Genius Keynote 2026
 </footer>
@@ -847,57 +726,42 @@ footer {
 
 <script>
 /* =========================================================
-   COMPTE À REBOURS (COUNTDOWN)
+   COMPTE À REBOURS
 ========================================================= */
 const eventDate = new Date("October 24, 2026 08:00:00").getTime();
-
 function updateCountdown() {
     const now = new Date().getTime();
     const distance = eventDate - now;
-
-    if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "<div style='color:var(--navy); font-weight:800;'>L'événement a commencé !</div>";
-        return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("days").textContent = String(days).padStart(2, '0');
-    document.getElementById("hours").textContent = String(hours).padStart(2, '0');
-    document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-    document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+    if (distance < 0) return;
+    document.getElementById("days").textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+    document.getElementById("hours").textContent = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+    document.getElementById("minutes").textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+    document.getElementById("seconds").textContent = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
 }
-
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
 
 /* =========================================================
-   GESTION DES PARAMÈTRES D'URL & FORMULAIRE
+   MISE À JOUR DU NOM EN TEMPS RÉEL SUR LA CARTE
 ========================================================= */
-function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-}
-
-const inviteParam = getUrlParameter('invite');
-const guestNameDisplay = document.getElementById("guestNameDisplay");
 const nameInput = document.getElementById("name");
+const guestNameDisplay = document.getElementById("guestNameDisplay");
 
-if (inviteParam) {
-    const formattedName = inviteParam.toUpperCase();
-    guestNameDisplay.textContent = formattedName;
-    nameInput.value = formattedName;
-}
+nameInput.addEventListener("input", function() {
+    const val = nameInput.value.trim();
+    guestNameDisplay.textContent = val ? val.toUpperCase() : "INVITÉ(E)";
+});
 
+
+/* =========================================================
+   GESTION DU FORMULAIRE ET GÉNÉRATION DE L'IMAGE
+========================================================= */
 const form = document.getElementById("rsvpForm");
 const confirmation = document.getElementById("confirmation");
 const confirmationText = document.getElementById("confirmationText");
+const downloadBtn = document.getElementById("downloadBtn");
+const backBtn = document.getElementById("backBtn");
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -906,35 +770,48 @@ form.addEventListener("submit", function(event) {
     const name = formData.get("name");
     const presence = formData.get("presence");
 
+    // Envoi vers Formspree en arrière-plan
     fetch(form.action, {
         method: 'POST',
         body: formData,
         headers: { 'Accept': 'application/json' }
     }).catch(error => console.log('Erreur réseau:', error));
 
+    // Sauvegarde locale
     let responses = JSON.parse(localStorage.getItem("geniusRSVP")) || [];
-    responses.push({
-        name: name,
-        email: formData.get("email"),
-        phone: formData.get("phone"),
-        presence: presence,
-        guests: formData.get("guests"),
-        message: formData.get("message"),
-        createdAt: new Date().toISOString()
-    });
+    responses.push({ name, email: formData.get("email"), phone: formData.get("phone"), presence, guests: formData.get("guests"), createdAt: new Date().toISOString() });
     localStorage.setItem("geniusRSVP", JSON.stringify(responses));
 
-    if (presence.includes("Oui")) {
-        confirmationText.innerHTML = `Merci <strong>${escapeHTML(name)}</strong> !<br><br>Votre présence au <strong>Genius Keynote 2026</strong> est bien confirmée.`;
-    } else if (presence.includes("sais pas")) {
-        confirmationText.innerHTML = `Merci <strong>${escapeHTML(name)}</strong> !<br><br>Votre réponse incertaine a bien été enregistrée. Nous espérons vous compter parmi nous !`;
-    } else {
-        confirmationText.innerHTML = `Merci <strong>${escapeHTML(name)}</strong> pour votre réponse.<br><br>Nous sommes désolés de ne pas vous compter parmi nous.`;
-    }
+    // Mettre à jour le nom sur la carte avant de capturer l'image
+    guestNameDisplay.textContent = name.toUpperCase();
 
+    // Afficher le message de succès
+    confirmationText.innerHTML = `Merci <strong>${escapeHTML(name)}</strong> !<br>Votre carte d'invitation personnalisée est prête à être téléchargée.`;
+    
     form.style.display = "none";
     confirmation.classList.add("active");
     confirmation.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
+// Télécharger la carte en image PNG
+downloadBtn.addEventListener("click", function() {
+    const cardElement = document.getElementById("captureCard");
+    
+    html2canvas(cardElement, { scale: 2, useCORS: true }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'Invitation-Genius-Keynote-2026.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+});
+
+// Bouton de reconduite / retour au site (remonte en haut ou actualise)
+backBtn.addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Optionnel : si vous voulez réinitialiser le formulaire
+    // form.reset();
+    // form.style.display = "block";
+    // confirmation.classList.remove("active");
 });
 
 function escapeHTML(text) {
