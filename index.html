@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Genius Keynote 2026 — Invitation Officielle</title>
 
-<!-- Bibliothèque html2canvas pour permettre de télécharger l'invitation en image -->
+<!-- Bibliothèque html2canvas pour télécharger l'invitation en image -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
@@ -258,34 +258,6 @@ button, input, select, textarea {
     color: #444;
 }
 
-.countdown-container {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 18px;
-}
-
-.countdown-box {
-    background: var(--navy);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 12px;
-    min-width: 65px;
-    text-align: center;
-}
-
-.countdown-number {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--yellow);
-}
-
-.countdown-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    color: #c7cbe0;
-}
-
 .seal {
     position: absolute;
     bottom: -75px;
@@ -480,7 +452,7 @@ button, input, select, textarea {
 }
 
 /* =========================================================
-   INFOS & FOOTER
+   INFOS & FOOTER AVEC COMPTE À REBOURS
 ========================================================= */
 .event-section {
     background: var(--navy);
@@ -509,12 +481,55 @@ button, input, select, textarea {
     margin-bottom: 8px;
 }
 
+/* Compte à rebours dans le footer */
+.footer-countdown {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.footer-countdown h4 {
+    color: var(--yellow);
+    font-size: 16px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.countdown-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 12px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.countdown-number {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--yellow);
+}
+
+.countdown-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #c7cbe0;
+    letter-spacing: .5px;
+}
+
 footer {
     background: #080e38;
     color: #aeb5d3;
     text-align: center;
     padding: 25px 20px;
     font-size: 14px;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 @media (max-width: 700px) {
@@ -528,7 +543,7 @@ footer {
 <body>
 
 <!-- =====================================================
-     HERO & CARTE D'INVITATION (Visble au début avec "INVITÉ(E)")
+     HERO & CARTE D'INVITATION
 ===================================================== -->
 <section class="hero" id="heroSection">
     <div class="invitation" id="captureCard">
@@ -582,25 +597,6 @@ footer {
         <div class="event-details-pill">
             <div>⏰ <span>08H00 - 13H00</span></div>
             <div>📍 <span>Genius Groups</span></div>
-        </div>
-
-        <div class="countdown-container" id="countdown">
-            <div class="countdown-box">
-                <div class="countdown-number" id="days">00</div>
-                <div class="countdown-label">Jours</div>
-            </div>
-            <div class="countdown-box">
-                <div class="countdown-number" id="hours">00</div>
-                <div class="countdown-label">Heures</div>
-            </div>
-            <div class="countdown-box">
-                <div class="countdown-number" id="minutes">00</div>
-                <div class="countdown-label">Min</div>
-            </div>
-            <div class="countdown-box">
-                <div class="countdown-number" id="seconds">00</div>
-                <div class="countdown-label">Sec</div>
-            </div>
         </div>
 
         <div class="seal">
@@ -679,11 +675,11 @@ footer {
                 </button>
             </form>
 
-            <!-- Bloc Confirmation avec Téléchargement d'image & Retour au site -->
+            <!-- Bloc Confirmation -->
             <div class="confirmation" id="confirmation">
                 <div class="confirmation-icon">✓</div>
                 <h3 id="confTitle">Merci pour votre réponse !</h3>
-                <p id="confirmationText" style="color:#68708d; margin-bottom:15px;">Votre carte personnalisée est prête.</p>
+                <p id="confirmationText" style="color:#68708d; margin-bottom:15px;">Votre carte personnalisée est prête à être téléchargée.</p>
                 
                 <button class="download-card-btn" id="downloadBtn">📥 Télécharger mon Invitation (Image)</button>
                 <br>
@@ -695,7 +691,7 @@ footer {
 
 
 <!-- =====================================================
-     INFOS ÉVÉNEMENT & FOOTER
+     INFOS ÉVÉNEMENT & FOOTER (AVEC LE DÉCOMPTE)
 ===================================================== -->
 <section class="event-section">
     <div class="container">
@@ -716,6 +712,30 @@ footer {
                 <p>Genius Groups</p>
             </div>
         </div>
+
+        <!-- Décompte placé dans le footer -->
+        <div class="footer-countdown">
+            <h4>⏳ Compte à rebours avant l'événement</h4>
+            <div class="countdown-container" id="countdown">
+                <div class="countdown-box">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Jours</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Heures</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Min</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Sec</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -782,7 +802,7 @@ form.addEventListener("submit", function(event) {
     responses.push({ name, email: formData.get("email"), phone: formData.get("phone"), presence, guests: formData.get("guests"), createdAt: new Date().toISOString() });
     localStorage.setItem("geniusRSVP", JSON.stringify(responses));
 
-    // Mettre à jour le nom sur la carte avant de capturer l'image
+    // Mettre à jour le nom sur la carte avant la capture
     guestNameDisplay.textContent = name.toUpperCase();
 
     // Afficher le message de succès
@@ -805,13 +825,9 @@ downloadBtn.addEventListener("click", function() {
     });
 });
 
-// Bouton de reconduite / retour au site (remonte en haut ou actualise)
+// Bouton de retour en haut du site
 backBtn.addEventListener("click", function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Optionnel : si vous voulez réinitialiser le formulaire
-    // form.reset();
-    // form.style.display = "block";
-    // confirmation.classList.remove("active");
 });
 
 function escapeHTML(text) {
