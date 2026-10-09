@@ -58,7 +58,6 @@ button, input, select, textarea {
     padding: 40px 15px;
 }
 
-/* Rabat et coins de l'enveloppe en arrière-plan */
 .hero::before {
     content: "";
     position: absolute;
@@ -97,7 +96,7 @@ button, input, select, textarea {
     background-size: 25px 25px;
     border-radius: 28px;
     box-shadow: 0 25px 60px rgba(0,0,0,.25);
-    padding: 45px 40px 95px;
+    padding: 40px 40px 95px;
     text-align: center;
 }
 
@@ -154,17 +153,17 @@ button, input, select, textarea {
 }
 
 .tagline {
-    margin-top: 18px;
+    margin-top: 15px;
     letter-spacing: 7px;
     color: var(--blue);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
 }
 
 .separator {
     width: 100%;
     height: 3px;
-    margin: 18px 0 25px;
+    margin: 15px 0 20px;
     background: linear-gradient(
         90deg,
         var(--blue),
@@ -180,18 +179,17 @@ button, input, select, textarea {
     display: inline-block;
     background: var(--navy);
     color: var(--yellow);
-    padding: 14px 28px;
-    border-radius: 20px;
-    font-size: clamp(26px, 5vw, 50px);
+    padding: 12px 26px;
+    border-radius: 18px;
+    font-size: clamp(24px, 4.5vw, 44px);
     font-weight: 800;
-    margin-bottom: 20px;
-    letter-spacing: .5px;
+    margin-bottom: 15px;
 }
 
 .guest-line {
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     color: #222;
 }
 
@@ -203,23 +201,23 @@ button, input, select, textarea {
 .description {
     max-width: 620px;
     margin: auto;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.4;
     color: #333;
 }
 
 .pleasure {
-    margin-top: 18px;
-    font-size: 19px;
+    margin-top: 15px;
+    font-size: 18px;
     font-weight: 600;
     color: #111;
 }
 
 .divider-short {
-    width: 60px;
+    width: 50px;
     height: 3px;
     background: var(--navy);
-    margin: 22px auto;
+    margin: 18px auto;
     border-radius: 2px;
 }
 
@@ -230,26 +228,26 @@ button, input, select, textarea {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 18px;
-    margin-top: 10px;
+    gap: 15px;
+    margin-top: 5px;
 }
 
 .day-name, .month {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     color: #222;
 }
 
 .day-number-box {
-    width: 105px;
-    height: 95px;
-    border-radius: 18px;
+    width: 95px;
+    height: 85px;
+    border-radius: 16px;
     background: var(--navy);
     color: var(--yellow);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 65px;
+    font-size: 58px;
     font-weight: 800;
     line-height: 1;
     box-shadow: 0 8px 20px rgba(12,21,80,.2);
@@ -260,12 +258,12 @@ button, input, select, textarea {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    margin-top: 22px;
+    margin-top: 15px;
     background: #f0f3fc;
     border: 1px solid #d4deff;
-    padding: 10px 22px;
-    border-radius: 15px;
-    font-size: 15px;
+    padding: 8px 18px;
+    border-radius: 14px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--navy);
 }
@@ -273,6 +271,41 @@ button, input, select, textarea {
 .event-details-pill span {
     font-weight: 500;
     color: #444;
+}
+
+/* =========================================================
+   COMPTE À REBOURS (COUNTDOWN)
+========================================================= */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.countdown-box {
+    background: var(--navy);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 12px;
+    min-width: 65px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(12,21,80,0.15);
+}
+
+.countdown-number {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--yellow);
+    line-height: 1.1;
+}
+
+.countdown-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #c7cbe0;
+    margin-top: 2px;
 }
 
 /* =========================================================
@@ -399,18 +432,19 @@ button, input, select, textarea {
 
 .radio-group {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
 }
 
 .radio-option {
     border: 1px solid #dce0eb;
     border-radius: 12px;
-    padding: 13px;
+    padding: 10px 8px;
     cursor: pointer;
     transition: .2s;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
+    text-align: center;
 }
 
 .radio-option:hover {
@@ -418,8 +452,8 @@ button, input, select, textarea {
 }
 
 .radio-option input {
-    width: auto;
-    margin-right: 6px;
+    display: block;
+    margin: 0 auto 4px;
 }
 
 .submit-btn {
@@ -537,47 +571,57 @@ footer {
         padding: 25px 10px;
     }
     .invitation {
-        padding: 30px 20px 85px;
+        padding: 25px 15px 85px;
         border-radius: 20px;
     }
     .brand-left {
-        font-size: 23px;
+        font-size: 22px;
     }
     .brand-right .genius-top {
-        font-size: 20px;
-    }
-    .brand-right .keynote-title {
-        font-size: 32px;
-    }
-    .brand-divider {
-        height: 55px;
-    }
-    .tagline {
-        font-size: 11px;
-        letter-spacing: 4px;
-    }
-    .title-pill {
-        padding: 12px 20px;
-    }
-    .guest-line {
         font-size: 18px;
     }
+    .brand-right .keynote-title {
+        font-size: 28px;
+    }
+    .brand-divider {
+        height: 50px;
+    }
+    .tagline {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+    .title-pill {
+        padding: 10px 20px;
+    }
+    .guest-line {
+        font-size: 16px;
+    }
     .description {
-        font-size: 15px;
+        font-size: 14px;
     }
     .day-number-box {
-        width: 85px;
-        height: 80px;
-        font-size: 50px;
+        width: 75px;
+        height: 70px;
+        font-size: 44px;
     }
     .day-name, .month {
-        font-size: 20px;
+        font-size: 18px;
     }
     .event-details-pill {
         flex-direction: column;
-        gap: 6px;
-        font-size: 14px;
-        padding: 12px 15px;
+        gap: 5px;
+        font-size: 13px;
+        padding: 10px 14px;
+    }
+    .countdown-box {
+        min-width: 55px;
+        padding: 6px 8px;
+    }
+    .countdown-number {
+        font-size: 16px;
+    }
+    .countdown-label {
+        font-size: 9px;
     }
     .seal {
         width: 130px;
@@ -651,10 +695,29 @@ footer {
             <div class="month">Octobre</div>
         </div>
 
-        <!-- Heure et Lieu -->
-        <div class="event-details-pill">
+        <!-- <div class="event-details-pill">
             <div>⏰ <span>08H00 - 13H00</span></div>
             <div>📍 <span>Genius Groups</span></div>
+        </div> -->
+
+        <!-- Compte à rebours dynamique -->
+        <div class="countdown-container" id="countdown">
+            <div class="countdown-box">
+                <div class="countdown-number" id="days">00</div>
+                <div class="countdown-label">Jours</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">Heures</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">Min</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">Sec</div>
+            </div>
         </div>
 
         <!-- Sceau Doré -->
@@ -703,6 +766,10 @@ footer {
                         <label class="radio-option">
                             <input type="radio" name="presence" value="Oui, je serai présent(e)" required>
                             ✓ Présent(e)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="presence" value="Je ne sais pas encore">
+                            ❓ Incertain(e)
                         </label>
                         <label class="radio-option">
                             <input type="radio" name="presence" value="Non, je ne pourrai pas venir">
@@ -780,6 +847,35 @@ footer {
 
 <script>
 /* =========================================================
+   COMPTE À REBOURS (COUNTDOWN)
+========================================================= */
+const eventDate = new Date("October 24, 2026 08:00:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "<div style='color:var(--navy); font-weight:800;'>L'événement a commencé !</div>";
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = String(days).padStart(2, '0');
+    document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+
+/* =========================================================
    GESTION DES PARAMÈTRES D'URL & FORMULAIRE
 ========================================================= */
 function getUrlParameter(name) {
@@ -830,6 +926,8 @@ form.addEventListener("submit", function(event) {
 
     if (presence.includes("Oui")) {
         confirmationText.innerHTML = `Merci <strong>${escapeHTML(name)}</strong> !<br><br>Votre présence au <strong>Genius Keynote 2026</strong> est bien confirmée.`;
+    } else if (presence.includes("sais pas")) {
+        confirmationText.innerHTML = `Merci <strong>${escapeHTML(name)}</strong> !<br><br>Votre réponse incertaine a bien été enregistrée. Nous espérons vous compter parmi nous !`;
     } else {
         confirmationText.innerHTML = `Merci <strong>${escapeHTML(name)}</strong> pour votre réponse.<br><br>Nous sommes désolés de ne pas vous compter parmi nous.`;
     }
